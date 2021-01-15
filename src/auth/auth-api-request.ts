@@ -276,7 +276,7 @@ function validateAuthFactorInfo(request: AuthFactorInfo, writeOperationType: Wri
   const authFactorInfoIdentifier =
       request.mfaEnrollmentId || request.phoneInfo || JSON.stringify(request);
   const uidRequired = writeOperationType !== WriteOperationType.Create;
-  if ((typeof request.mfaEnrollmentId !== 'undefined' || uidRequired) &&
+  if ((typeof request.mfaEnrollmentId !== 'undefined') &&
       !validator.isNonEmptyString(request.mfaEnrollmentId)) {
     throw new FirebaseAuthError(
       AuthClientErrorCode.INVALID_UID,
